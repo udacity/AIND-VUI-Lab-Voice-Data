@@ -15,8 +15,8 @@ def main(input_directory, data_directory, group, speaker, chapter):
     save_path = os.path.join(data_directory, group, speaker, chapter)
     idtag = speaker+'-'+chapter
     transcript_filename = idtag + '.trans.txt'
-    outfile = open(os.path.join(save_path, transcript_filename), 'w')
     os.makedirs(save_path, exist_ok=True)
+    outfile = open(os.path.join(save_path, transcript_filename), 'w')
     save_path = os.path.join(data_directory, group, speaker, chapter)
     for file in os.listdir(input_directory):
         if file.endswith(".wav"):
@@ -29,7 +29,8 @@ def main(input_directory, data_directory, group, speaker, chapter):
             os.replace('testwavout.wav',os.path.join(save_path,new_filename))
             wav_file_count += 1
             outfile.write(ident+' \n')
-
+    outfile.close()
+	
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
